@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 210mm;
+    height: 297mm;
+    font-family: 'Arial', sans-serif;
+    background: #fff;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  /* Linha pontilhada de dobra */
+  .grid::after {
+    content: '';
+    position: absolute;
+    top: 148.5mm;
+    left: 0;
+    width: 210mm;
+    height: 1px;
+    border-top: 1px dashed #ccc;
+    pointer-events: none;
+  }
+
+  .quadrante {
+    position: relative;
+    width: 105mm;
+    height: 148.5mm;
+    overflow: hidden;
+    border: 1px solid #eee;
+  }
+
+  /* ========== PARTES 1 e 2 (frente do crachá) ========== */
+  .quadrante.frente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarja {
+    width: 100%;
+    padding: 6mm 4mm;
+    background-color: {{COR_TARJA}};
+    text-align: center;
+  }
+
+  .tarja .categoria-label {
+    color: #fff;
+    font-size: 14pt;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .logo-area {
+    width: 100%;
+    padding: 4mm 4mm 2mm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+  }
+
+  .logo-text {
+    font-size: 22pt;
+    font-weight: 900;
+    color: #3B1A08;
+    letter-spacing: 3px;
+  }
+
+  .logo-sub {
+    font-size: 7pt;
+    color: #6F4E37;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  .qr-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2mm;
+  }
+
+  .qr-area img {
+    width: 38mm;
+    height: 38mm;
+  }
+
+  .dados-area {
+    width: 100%;
+    padding: 2mm 5mm 4mm;
+    background: #FAF6F0;
+    border-top: 2px solid {{COR_TARJA}};
+  }
+
+  .dados-nome {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .dados-empresa {
+    font-size: 8pt;
+    color: #555;
+    margin-top: 1mm;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .dados-doc {
+    font-size: 7pt;
+    color: #888;
+    margin-top: 1mm;
+  }
+
+  .credencial-id {
+    font-size: 6pt;
+    color: #aaa;
+    margin-top: 1mm;
+    font-family: monospace;
+  }
+
+  /* ========== PARTES 3 e 4 (verso do crachá) ========== */
+  .quadrante.verso {
+    display: flex;
+    flex-direction: column;
+    padding: 6mm 5mm;
+    background: #FAF6F0;
+  }
+
+  .verso-titulo {
+    font-size: 9pt;
+    font-weight: bold;
+    color: #3B1A08;
+    border-bottom: 1px solid {{COR_TARJA}};
+    padding-bottom: 2mm;
+    margin-bottom: 3mm;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .verso-texto {
+    font-size: 6.5pt;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 3mm;
+  }
+
+  .verso-texto li {
+    margin-left: 4mm;
+    margin-bottom: 1mm;
+  }
+
+  .lgpd-box {
+    margin-top: auto;
+    padding: 3mm;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2mm;
+  }
+
+  .lgpd-titulo {
+    font-size: 7pt;
+    font-weight: bold;
+    color: #3B1A08;
+    margin-bottom: 1mm;
+  }
+
+  .lgpd-texto {
+    font-size: 5.5pt;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .evento-data {
+    font-size: 7pt;
+    color: #888;
+    margin-top: 2mm;
+    text-align: center;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .grid { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- PARTE 1: Frente (coluna esquerda, linha superior) -->
+  <div class="quadrante frente">
+    <div class="tarja">
+      <div class="categoria-label">{{CATEGORIA}}</div>
+    </div>
+    <div class="logo-area">
+      <div>
+        <div class="logo-text">ALTA CAFÉ</div>
+        <div class="logo-sub">FEIRA INTERNACIONAL DO CAFÉ · FRANCA/SP</div>
+      </div>
+    </div>
+    <div class="qr-area">
+      <img src="data:image/png;base64,{{QR_CODE_BASE64}}" alt="QR Code Credencial" />
+      <div class="evento-data">{{DATA_EVENTO}}</div>
+    </div>
+    <div class="dados-area">
+      <div class="dados-nome">{{NOME}}</div>
+      <div class="dados-empresa">{{EMPRESA}}</div>
+      <div class="dados-doc">{{DOCUMENTO}}</div>
+      <div class="credencial-id">ID: {{CREDENCIAL_ID}}</div>
+    </div>
+  </div>
+
+  <!-- PARTE 2: Frente espelhada (coluna direita, linha superior) -->
+  <div class="quadrante frente">
+    <div class="tarja">
+      <div class="categoria-label">{{CATEGORIA}}</div>
+    </div>
+    <div class="logo-area">
+      <div>
+        <div class="logo-text">ALTA CAFÉ</div>
+        <div class="logo-sub">FEIRA INTERNACIONAL DO CAFÉ · FRANCA/SP</div>
+      </div>
+    </div>
+    <div class="qr-area">
+      <img src="data:image/png;base64,{{QR_CODE_BASE64}}" alt="QR Code Credencial" />
+      <div class="evento-data">{{DATA_EVENTO}}</div>
+    </div>
+    <div class="dados-area">
+      <div class="dados-nome">{{NOME}}</div>
+      <div class="dados-empresa">{{EMPRESA}}</div>
+      <div class="dados-doc">{{DOCUMENTO}}</div>
+      <div class="credencial-id">ID: {{CREDENCIAL_ID}}</div>
+    </div>
+  </div>
+
+  <!-- PARTE 3: Verso — Dicas de Visitação (coluna esquerda, linha inferior) -->
+  <div class="quadrante verso">
+    <div class="verso-titulo">Dicas de Visitação</div>
+    <div class="verso-texto">
+      <ul>
+        <li>Apresente este crachá na entrada e nas catracas do evento.</li>
+        <li>O QR Code é pessoal e intransferível.</li>
+        <li>Horário de funcionamento: 09h às 18h (dias de evento).</li>
+        <li>Estacionamento gratuito no Clube de Campo da Franca.</li>
+        <li>Dúvidas? Procure um colaborador com colete laranja.</li>
+        <li>Proibida a entrada de animais e bebidas alcoólicas externas.</li>
+        <li>Em caso de perda do crachá, solicite 2ª via na recepção.</li>
+        <li>Crianças até 12 anos com acesso gratuito acompanhadas de responsável.</li>
+      </ul>
+    </div>
+    <div class="lgpd-box">
+      <div class="lgpd-titulo">Aviso de Privacidade — LGPD</div>
+      <div class="lgpd-texto">
+        Seus dados pessoais foram coletados com base no seu consentimento (Art. 7º, I, Lei 13.709/2018)
+        para fins exclusivos de credenciamento e controle de acesso ao evento ALTA CAFÉ.
+        Os dados são tratados pela Comissão Organizadora e não são compartilhados com terceiros.
+        Você tem direito à consulta, correção e exclusão dos seus dados a qualquer momento,
+        mediante solicitação via e-mail: privacidade@altacafe.com.br
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTE 4: Verso — Programação e Contato (coluna direita, linha inferior) -->
+  <div class="quadrante verso">
+    <div class="verso-titulo">Sobre o Evento</div>
+    <div class="verso-texto">
+      <p><strong>ALTA CAFÉ</strong> é a maior feira de café especial do interior paulista,
+      reunindo cafeicultores, exportadores, baristas e amantes do café de todo o Brasil.</p>
+      <br/>
+      <p><strong>Realização:</strong> FATEC Franca e Associação dos Cafeicultores do Alto Mogiana</p>
+      <br/>
+      <p><strong>Local:</strong> Clube de Campo da Franca<br/>Av. Champagnat, s/n — Franca/SP</p>
+      <br/>
+      <p><strong>Programação:</strong></p>
+      <ul>
+        <li>Concurso de Qualidade do Café</li>
+        <li>Workshops e Masterclasses</li>
+        <li>Área de Exposição e Negócios</li>
+        <li>Espaço de Degustação Gratuita</li>
+      </ul>
+    </div>
+    <div class="lgpd-box">
+      <div class="lgpd-titulo">Contato</div>
+      <div class="lgpd-texto">
+        contato@altacafe.com.br | (16) 3700-0000<br/>
+        www.altacafe.com.br | @altacafefranca
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

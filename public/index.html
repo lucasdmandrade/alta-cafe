@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credenciamento — ALTA CAFÉ 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>☕ ALTA CAFÉ</h1>
+    <span>Feira Internacional do Café · Franca/SP · 10 a 13 de Abril de 2026</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div id="alerta" class="alert"></div>
+
+  <div id="secao-formulario">
+    <div class="card">
+      <h2>Formulário de Credenciamento</h2>
+
+      <form id="form-inscricao">
+
+        <!-- Dados pessoais -->
+        <div class="row">
+          <div class="form-group">
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(16) 99999-9999">
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria *</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Selecione...</option>
+              <option value="VISITANTE">Visitante</option>
+              <option value="EXPOSITOR">Expositor</option>
+              <option value="CAFEICULTOR">Cafeicultor</option>
+              <option value="IMPRENSA">Imprensa</option>
+              <option value="COMISSAO_ORGANIZADORA">Comissão Organizadora</option>
+              <option value="COLABORADOR">Colaborador</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="docTipo">Tipo de documento *</label>
+            <select id="docTipo" name="documentoTipo" required>
+              <option value="CPF">CPF</option>
+              <option value="CNPJ">CNPJ</option>
+              <option value="RG">RG</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="docNumero">Número do documento *</label>
+            <input type="text" id="docNumero" name="documentoNumero" required placeholder="000.000.000-00">
+          </div>
+        </div>
+
+        <!-- Campos Expositor -->
+        <div id="campos-expositor" class="campos-categoria">
+          <div class="row">
+            <div class="form-group">
+              <label for="empresa-exp">Empresa *</label>
+              <input type="text" id="empresa-exp" name="empresa" placeholder="Nome da empresa">
+            </div>
+            <div class="form-group">
+              <label for="cargo-exp">Cargo *</label>
+              <input type="text" id="cargo-exp" name="cargo" placeholder="Seu cargo">
+            </div>
+          </div>
+        </div>
+
+        <!-- Campos Cafeicultor -->
+        <div id="campos-cafeicultor" class="campos-categoria">
+          <div class="row">
+            <div class="form-group">
+              <label for="empresa-caf">Fazenda / Cooperativa *</label>
+              <input type="text" id="empresa-caf" name="empresa" placeholder="Nome da fazenda">
+            </div>
+            <div class="form-group">
+              <label for="area-atuacao">Região / Área de Atuação *</label>
+              <input type="text" id="area-atuacao" name="areaAtuacao" placeholder="Ex: Alto Mogiana">
+            </div>
+          </div>
+        </div>
+
+        <!-- Campos Imprensa -->
+        <div id="campos-imprensa" class="campos-categoria">
+          <div class="row">
+            <div class="form-group">
+              <label for="empresa-imp">Veículo de Comunicação *</label>
+              <input type="text" id="empresa-imp" name="empresa" placeholder="Jornal, Rádio, etc.">
+            </div>
+            <div class="form-group">
+              <label for="nome-veiculo">Nome do Veículo *</label>
+              <input type="text" id="nome-veiculo" name="nomeVeiculo" placeholder="Nome do veículo">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="numero-registro">Nº de Registro (DRT) *</label>
+            <input type="text" id="numero-registro" name="numeroRegistro" placeholder="Número do registro">
+          </div>
+        </div>
+
+        <!-- Campos Comissão / Colaborador -->
+        <div id="campos-comissao" class="campos-categoria">
+          <div class="form-group">
+            <label for="cargo-com">Cargo / Função *</label>
+            <input type="text" id="cargo-com" name="cargo" placeholder="Seu cargo na comissão">
+          </div>
+        </div>
+
+        <div id="campos-colaborador" class="campos-categoria">
+          <div class="row">
+            <div class="form-group">
+              <label for="empresa-col">Empresa *</label>
+              <input type="text" id="empresa-col" name="empresa" placeholder="Nome da empresa">
+            </div>
+            <div class="form-group">
+              <label for="cargo-col">Cargo *</label>
+              <input type="text" id="cargo-col" name="cargo" placeholder="Seu cargo">
+            </div>
+          </div>
+        </div>
+
+        <!-- Descarbonização -->
+        <details style="margin-bottom:1rem;">
+          <summary style="cursor:pointer;font-weight:600;color:#6F4E37;padding:.5rem 0;">
+            🌱 Calcular Pegada de Carbono do Deslocamento (opcional)
+          </summary>
+          <div style="margin-top:.8rem;">
+            <div class="row">
+              <div class="form-group">
+                <label for="cidade-origem">Cidade de origem</label>
+                <input type="text" id="cidade-origem" name="cidadeOrigem" placeholder="Ex: Ribeirão Preto">
+              </div>
+              <div class="form-group">
+                <label for="combustivel">Tipo de combustível</label>
+                <select id="combustivel" name="combustivel">
+                  <option value="">Selecione...</option>
+                  <option value="GASOLINA">Gasolina</option>
+                  <option value="ALCOOL">Álcool / Etanol</option>
+                  <option value="DIESEL">Diesel</option>
+                  <option value="ELETRICO">Elétrico</option>
+                </select>
+              </div>
+            </div>
+            <div id="resultado-co2" class="alert alert-info"></div>
+          </div>
+        </details>
+
+        <!-- LGPD -->
+        <div class="lgpd-box">
+          <strong>Termo de Consentimento — LGPD</strong><br>
+          Seus dados pessoais serão utilizados exclusivamente para credenciamento e controle de acesso
+          ao evento ALTA CAFÉ 2026, conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018).
+          Os dados são tratados pela Comissão Organizadora e não são compartilhados com terceiros.
+          Você pode solicitar a exclusão dos seus dados a qualquer momento pelo e-mail: privacidade@altacafe.com.br
+        </div>
+
+        <div class="checkbox-row form-group">
+          <input type="checkbox" id="aceite-lgpd" name="aceiteLgpd" required>
+          <label for="aceite-lgpd">Li e aceito os termos de uso e a política de privacidade (LGPD) *</label>
+        </div>
+
+        <button type="submit" class="btn btn-full">Realizar Credenciamento</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Seção de sucesso -->
+  <div id="secao-sucesso" style="display:none;">
+    <div class="card" style="text-align:center;">
+      <h2>✅ Credenciamento Realizado!</h2>
+      <p style="margin:1rem 0;color:#555;">Seu cadastro foi concluído com sucesso.</p>
+      <div id="info-co2" style="display:none;margin-bottom:1rem;" class="alert alert-info show"></div>
+      <a id="btn-pdf" href="#" class="btn btn-success" target="_blank" style="margin-bottom:1rem;display:block;">
+        📄 Baixar Credencial em PDF
+      </a>
+      <button onclick="location.reload()" class="btn btn-secondary">Novo Credenciamento</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/inscricao.js"></script>
+</body>
+</html>

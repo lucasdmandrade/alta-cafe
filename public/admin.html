@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin — ALTA CAFÉ 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div style="flex:1">
+    <h1>☕ ALTA CAFÉ — Painel Administrativo</h1>
+    <span id="info-admin"></span>
+  </div>
+  <button id="btn-logout" class="btn btn-secondary" onclick="logout()" style="display:none;">Sair</button>
+</header>
+
+<div class="container">
+
+  <!-- Tela de Login -->
+  <div id="secao-login">
+    <div class="card" style="max-width:400px;margin:0 auto;">
+      <h2>Acesso Restrito</h2>
+      <div id="alerta-login" class="alert"></div>
+      <form id="form-login">
+        <div class="form-group">
+          <label for="email-admin">E-mail</label>
+          <input type="email" id="email-admin" required placeholder="admin@altacafe.com.br">
+        </div>
+        <div class="form-group">
+          <label for="senha-admin">Senha</label>
+          <input type="password" id="senha-admin" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-full">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Painel -->
+  <div id="secao-painel" style="display:none;">
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;">
+        <h2 style="margin:0;border:none;">Credenciados</h2>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <select id="filtro-categoria" onchange="carregarCredenciados(1)">
+            <option value="">Todas as categorias</option>
+            <option value="EXPOSITOR">Expositor</option>
+            <option value="CAFEICULTOR">Cafeicultor</option>
+            <option value="VISITANTE">Visitante</option>
+            <option value="IMPRENSA">Imprensa</option>
+            <option value="COMISSAO_ORGANIZADORA">Comissão Organizadora</option>
+            <option value="COLABORADOR">Colaborador</option>
+          </select>
+          <button class="btn" onclick="carregarCredenciados(1)">Atualizar</button>
+        </div>
+      </div>
+
+      <div id="info-total" style="font-size:.875rem;color:#888;margin-bottom:.8rem;"></div>
+
+      <div style="overflow-x:auto;">
+        <table id="tabela-credenciados">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>E-mail</th>
+              <th>Empresa</th>
+              <th>Documento</th>
+              <th>CO₂ (kg)</th>
+              <th>PDF</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-credenciados"></tbody>
+        </table>
+      </div>
+
+      <div id="paginacao" style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

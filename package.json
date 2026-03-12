@@ -1,0 +1,34 @@
+{
+  "name": "alta-cafe",
+  "version": "1.0.0",
+  "description": "Sistema de credenciamento - Feira ALTA CAFÉ Franca/SP",
+  "main": "dist/interfaces/http/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/interfaces/http/server.ts",
+    "build": "tsc",
+    "start": "node dist/interfaces/http/server.js",
+    "db:migrate": "psql $DATABASE_URL -f src/infrastructure/database/migrations/001_initial_schema.sql"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.3",
+    "puppeteer": "^22.15.0",
+    "qrcode": "^1.5.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.11.13",
+    "@types/qrcode": "^1.5.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}

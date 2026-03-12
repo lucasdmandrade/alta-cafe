@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validar Acesso — ALTA CAFÉ 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>☕ ALTA CAFÉ — Controle de Acesso</h1>
+    <span>Aponte a câmera para o QR Code do crachá</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📷 Leitor de QR Code</h2>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+
+    <div id="resultado" class="qr-result" style="display:none;"></div>
+
+    <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;">
+      <button id="btn-iniciar" class="btn btn-success" onclick="iniciarCamera()">Iniciar Câmera</button>
+      <button id="btn-parar" class="btn btn-danger" onclick="pararCamera()" style="display:none;">Parar</button>
+    </div>
+
+    <p style="margin-top:.8rem;font-size:.8rem;color:#888;">
+      Ou insira o ID da credencial manualmente:
+    </p>
+    <div style="display:flex;gap:.5rem;margin-top:.3rem;">
+      <input type="text" id="input-manual" placeholder="UUID da credencial" style="flex:1;">
+      <button class="btn" onclick="validarManual()">Validar</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Histórico da Sessão</h2>
+    <table>
+      <thead>
+        <tr><th>Hora</th><th>ID</th><th>Resultado</th></tr>
+      </thead>
+      <tbody id="historico"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="js/validar.js"></script>
+</body>
+</html>
