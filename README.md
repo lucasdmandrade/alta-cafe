@@ -1,6 +1,6 @@
 # ALTA CAFÉ — Sistema de Credenciamento
 
-> Projeto desenvolvido para o **Hackathon FATEC Franca 2026**, sob orientação dos professores Alexandre Gomes da Silva, Eliza Maria da Cunha Bomfim e Leonardo Henrique Raiz.
+> Projeto desenvolvido para o **Hackathon FATEC Franca 2026**, sob orientação das professoras Eliza Maria da Cunha Bomfim e Leonardo Henrique Raiz.
 
 ---
 
@@ -35,7 +35,7 @@ O desafio exigiu o uso de **Arquitetura Hexagonal (Ports and Adapters)**, isolan
 
 ## Tempo de conclusão
 
-O projeto foi concluído em **11 de março de 2026**, dentro da janela de desenvolvimento de um hackathon de 12 horas, contemplando todas as User Stories do backlog ágil proposto.
+O projeto foi integralmente gerado por **Claude (Anthropic)** em uma única sessão de desenvolvimento assistido por IA, em **aproximadamente 35 minutos** — desde a leitura da documentação arquitetural até o push final no GitHub, contemplando todas as User Stories do backlog ágil proposto.
 
 ---
 
